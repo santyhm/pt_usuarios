@@ -46,3 +46,7 @@ php artisan migrate:fresh --seed
 
 ## Paso 5
 php artisan serve
+
+## Usuario y contraseña 
+admin@admin.com
+password: admin123*

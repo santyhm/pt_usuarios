@@ -24,10 +24,16 @@ class ManageUsers extends Component
 
     public function createUser()
     {
-        // $this->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|email|unique:users,email',
-        // ]);
+        $this->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $this->user_id,
+        ], [
+            'name.required' => 'El campo nombre es requerido.',
+            'name.string' => 'El campo nombre debe ser una cadena de caracteres.',
+            'email.required' => 'El campo correo electrónico es requerido.',
+            'email.email' => 'El campo correo electrónico debe ser una dirección de correo electrónico válida.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+        ]);
 
         User::create([
             'name' => $this->name,
@@ -55,11 +61,16 @@ class ManageUsers extends Component
 
     public function updateUser()
     {
-        // dd($this->user_id, $this->name, $this->last_name, $this->email, $this->phone, $this->active);
-        // $this->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|email|unique:users,email,' . $this->user_id,
-        // ]);
+        $this->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $this->user_id,
+        ], [
+            'name.required' => 'El campo nombre es requerido.',
+            'name.string' => 'El campo nombre debe ser una cadena de caracteres.',
+            'email.required' => 'El campo correo electrónico es requerido.',
+            'email.email' => 'El campo correo electrónico debe ser una dirección de correo electrónico válida.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+        ]);
 
         $user = User::find($this->user_id);
         $user->update([
